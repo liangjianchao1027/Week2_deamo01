@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+
+    defaultConfig {
+        applicationId "liangjianchao.com.bwei.week2_deamo01"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'org.xutils:xutils:3.5.0'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile project(':xlistview')
+    compile 'com.github.uncleleonfan:SlidingMenu:1.0.0'
+    compile files('libs/open_sdk_r5788_lite.jar')
+    compile 'com.github.bumptech.glide:glide:4.0.0'
+}
